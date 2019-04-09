@@ -3,6 +3,7 @@ package fr.umontpellier.iut;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.TreeSet;
 
 public class Entreprise {
     private Collection<Employe> lePersonnel;
@@ -20,10 +21,14 @@ public class Entreprise {
         lePersonnel.remove(e);
     }
 
+    public Collection<Employe> getEmploye() {
+        return new TreeSet<>(lePersonnel);
+    }
+
     @Override
     public String toString() {
         return "Entreprise{" +
-                "lePersonnel=" + lePersonnel +
+                "lePersonnel=" + lePersonnel + "\n" +
                 '}';
     }
 }

@@ -3,7 +3,7 @@ package fr.umontpellier.iut;
 import java.time.LocalDate;
 import java.util.Objects;
 
-public class Employe {
+public class Employe implements Comparable<Employe>{
 
     private String nss; // numéro de sécurité social
     private String nom;
@@ -62,6 +62,16 @@ public class Employe {
 
     public double getNbHeures() {
         return nbHeures;
+    }
+
+    public int compareTo(Employe o){
+        int x = this.nom.compareTo(o.nom);
+        if(x==0){
+            return -this.nss.compareTo(o.nss);
+        }else {
+            return x;
+        }
+
     }
 
     @Override
