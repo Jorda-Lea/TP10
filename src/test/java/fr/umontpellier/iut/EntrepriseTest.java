@@ -43,6 +43,8 @@ class EntrepriseTest {
     }
 
 
+
+
     @Test
     void getEmployeUn() {
         entreprise.embaucher(e1, LocalDate.now());
@@ -72,7 +74,6 @@ class EntrepriseTest {
         assertTrue(employes.contains(e1));
     }
 
-
     @Test
     void getEmpleOrdre(){
         entreprise.embaucher(e2, LocalDate.now());
@@ -83,7 +84,33 @@ class EntrepriseTest {
         assertEquals(e4, employes.get(0));
         assertEquals(e1, employes.get(1));
         assertEquals(e2, employes.get(2));
-        assertEquals(e4, employes.get(3));
+        assertEquals(e3, employes.get(3));
         assertEquals(4, employes.size());
+    }
+
+
+    @Test
+    void distribuerBonusTest(){
+        entreprise.embaucher(e1, LocalDate.of(2018, 4, 5));
+        entreprise.embaucher(e2, LocalDate.of(2019, 3, 5));
+        entreprise.embaucher(e3, LocalDate.of(2019, 3, 5));
+        entreprise.embaucher(e4, LocalDate.of(2017, 4, 5));
+        entreprise.setBonusTotal(100);
+        entreprise.distribuerBonus();
+        assertEquals(72, e4.getBonus());
+        assertEquals(28, e1.getBonus());
+        assertEquals(0, e3.getBonus());
+        assertEquals(0, e2.getBonus());
+    }
+
+    @Test
+    void remercier(){
+        entreprise.embaucher(e1, LocalDate.of(2018, 4, 5));
+        entreprise.embaucher(e2, LocalDate.of(2019, 3, 5));
+        entreprise.embaucher(e3, LocalDate.of(2019, 3, 5));
+        entreprise.embaucher(e4, LocalDate.of(2017, 4, 5));
+        entreprise.remercier(3);
+        assertEquals(1, entreprise);
+
     }
 }
