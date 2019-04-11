@@ -34,4 +34,11 @@ class EmployeTest {
         entreprise.embaucher(e2, LocalDate.of(2019, 1, 5));
         assertEquals(e1.getMoisAnciennete(), e2.getMoisAnciennete());
     }
+    @Test
+    void getIndemniteTransport(){
+        e1.setBase(1);
+        e1.setAdresse("Montpellier");
+        assertEquals(0, e1.getIndemniteTransport());
+    }
+
 }

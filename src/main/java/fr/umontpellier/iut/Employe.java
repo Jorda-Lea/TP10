@@ -80,6 +80,10 @@ public class Employe implements Comparable<Employe>{
         return base;
     }
 
+    public void setBase(double base) {
+        this.base = base;
+    }
+
     public double getNbHeures() {
         return nbHeures;
     }
